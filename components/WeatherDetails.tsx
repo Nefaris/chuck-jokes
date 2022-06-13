@@ -5,6 +5,8 @@ import { View } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import dayjs from "dayjs";
 
 type Props = {
   weatherData: CityWeatherData;
@@ -62,6 +64,14 @@ const WeatherDetails: FC<Props> = ({ weatherData }) => {
         <PropertyTile
           icon={<AntDesign name="clouddownload" size={24} />}
           value={`${weatherData.main.pressure} hPa`}
+        />
+        <PropertyTile
+          icon={<Feather name="sunrise" size={24} />}
+          value={dayjs.unix(weatherData.sys.sunrise).format("HH:mm")}
+        />
+        <PropertyTile
+          icon={<Feather name="sunset" size={24} />}
+          value={dayjs.unix(weatherData.sys.sunset).format("HH:mm")}
         />
       </View>
     </View>
